@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathias Østby - Under Construction</title>
+    <style>
+        /* Grunnleggende stil for hele siden */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Sørger for at kroppen fyller hele viewport-høyden */
+        }
+
+        /* CSS-variabler for aksentfarge og nav-høyde */
+        :root {
+            --accent: #ff3366;
+            --nav-height: 90px;
+        }
+
+        /* Container for innhold for å sentrere det */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigasjon - kopiert fra din index.html for konsistens */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+        }
+        
+        /* Stil for språkvelgeren */
+        .lang-switcher a {
+            padding: 0 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .lang-switcher a.active {
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .lang-switcher span {
+            color: #ccc;
+        }
+
+        /* Hovedinnhold for "under construction" siden */
+        .under-construction {
+            flex-grow: 1; /* Lar denne seksjonen fylle tilgjengelig plass */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: var(--nav-height); /* Offset for fast navigasjonslinje */
+        }
+
+        .construction-content {
+            padding: 4rem 2rem;
+            border: 1px solid #000;
+            background: #f9f9f9;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .construction-content h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--accent); /* Bruker aksentfargen for tittel */
+        }
+
+        .construction-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .construction-content .back-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: none;
+        }
+
+        .construction-content .back-link:hover {
+            background: #e62e5c; /* Litt mørkere aksentfarge ved hover */
+            transform: translateY(-2px);
+        }
+
+        /* Enkel bunntekst, for å matche følelsen av hovedsidens kontaktseksjon */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            color: #999;
+        }
+
+        /* Responsive justeringer for mindre skjermer */
+        @media (max-width: 768px) {
+            .nav-content {
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav a {
+                font-size: 0.8rem;
+            }
+            .construction-content {
+                padding: 2rem 1.5rem;
+            }
+            .construction-content h1 {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+            }
+        }
+
+        /* Spesifikke justeringer for veldig små skjermer (f.eks. iPhone SE) */
+        @media (max-width: 375px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .nav-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                font-size: 1.1rem;
+                line-height: 1.1;
+            }
+            .nav-logo .first-name {
+                letter-spacing: 0.1em;
+            }
+            .nav-logo .last-name {
+                letter-spacing: 0.35em;
+                margin-left: 0.15em;
+            }
+            .nav-links {
+                gap: 1.5rem;
+                margin-top: 0.5rem;
+            }
+            .nav {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <span class="first-name">MATHIAS</span>
+                <span class="last-name">ØSTBY</span>
+            </div>
+            <div class="nav-links">
+                <!-- Lenker for å opprettholde layout, men de vil ikke navigere på denne siden -->
+                <a href="#">Experience</a>
+                <a href="#">Contact</a>
+            </div>
+            
+            <!-- Språkvelger - "EN" er aktiv her, "NO" lenker tilbake til hovedsiden -->
+            <div class="lang-switcher">
+                <a id="lang-no" href="../">NO</a>
+                <span>|</span>
+                <a id="lang-en" class="active">EN</a>
+            </div>            
+        </div>
+    </nav>
+
+    <section class="under-construction">
+        <div class="container">
+            <div class="construction-content">
+                <h1>Under Construction</h1>
+                <p>My English portfolio is currently being built. Please check back soon for updates!</p>
+                <a href="../" class="back-link">Go back to Norwegian site</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mathias Østby. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Her kan du legge til eventuell JavaScript som er spesifikk for denne siden.
+        // For en enkel "under construction"-side er det sannsynligvis ikke nødvendig.
+    </script>
+</body>
+</html>
