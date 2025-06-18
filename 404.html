@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Mathias Østby</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --accent: #ff3366;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: #000;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .nav-logo:hover {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Main 404 Content */
+        .error-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 6rem;
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .error-number {
+            font-size: clamp(8rem, 20vw, 16rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.8;
+            color: #000;
+            position: relative;
+            margin-bottom: 2rem;
+            animation: glitchEffect 3s infinite alternate;
+        }
+
+        .error-number::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) skew(-20deg);
+            width: 80%;
+            height: 12px;
+            background: var(--accent);
+            opacity: 0.8;
+            animation: slideWidth 2s ease-in-out infinite alternate;
+        }
+
+        .error-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            color: #000;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .error-description {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid #000;
+            background: transparent;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-primary::before {
+            background: var(--accent);
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Floating elements for visual interest */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.3;
+        }
+
+        .floating-element:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+
+        .floating-element:nth-child(2) {
+            left: 20%;
+            animation-delay: 2s;
+            animation-duration: 18s;
+        }
+
+        .floating-element:nth-child(3) {
+            left: 30%;
+            animation-delay: 4s;
+            animation-duration: 22s;
+        }
+
+        .floating-element:nth-child(4) {
+            left: 40%;
+            animation-delay: 6s;
+            animation-duration: 16s;
+        }
+
+        .floating-element:nth-child(5) {
+            left: 50%;
+            animation-delay: 8s;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(6) {
+            left: 60%;
+            animation-delay: 10s;
+            animation-duration: 14s;
+        }
+
+        .floating-element:nth-child(7) {
+            left: 70%;
+            animation-delay: 12s;
+            animation-duration: 24s;
+        }
+
+        .floating-element:nth-child(8) {
+            left: 80%;
+            animation-delay: 14s;
+            animation-duration: 19s;
+        }
+
+        .floating-element:nth-child(9) {
+            left: 90%;
+            animation-delay: 16s;
+            animation-duration: 17s;
+        }
+
+        /* Animations */
+        @keyframes glitchEffect {
+            0%, 100% {
+                transform: translateX(0) scale(1);
+                filter: hue-rotate(0deg);
+            }
+            20% {
+                transform: translateX(2px) scale(1.01);
+                filter: hue-rotate(90deg);
+            }
+            40% {
+                transform: translateX(-2px) scale(0.99);
+                filter: hue-rotate(180deg);
+            }
+            60% {
+                transform: translateX(1px) scale(1.01);
+                filter: hue-rotate(270deg);
+            }
+            80% {
+                transform: translateX(-1px) scale(0.99);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes slideWidth {
+            0% {
+                width: 60%;
+                opacity: 0.6;
+            }
+            100% {
+                width: 90%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav {
+                padding: 1rem;
+            }
+
+            .nav-content {
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav a {
+                font-size: 0.8rem;
+            }
+
+            .error-section {
+                padding-top: 4rem;
+                padding-bottom: 2rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .nav-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                font-size: 1.1rem;
+                line-height: 1.1;
+            }
+            
+            .nav-logo .first-name {
+                letter-spacing: 0.1em;
+            }
+            
+            .nav-logo .last-name {
+                letter-spacing: 0.35em;
+                margin-left: 0.15em;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                margin-top: 0.5rem;
+            }
+            
+            .nav {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-logo {
+                font-size: 1.5rem;
+                font-weight: 900;
+                letter-spacing: 0.08em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">
+                <span class="first-name">MATHIAS</span>
+                <span class="last-name">ØSTBY</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <section class="error-section">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-number">404</div>
+                <h1 class="error-title">PAGE NOT FOUND</h1>
+                <p class="error-description">
+                    The page you're looking for seems to have wandered off into the digital wilderness. 
+                    Let's get you back on track to explore meaningful experiences and creative projects.
+                </p>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">Back to Home</a>
+                    <a href="/#experience" class="btn">View Projects</a>
+                    <a href="/#contact" class="btn">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive hover effects
+        const errorNumber = document.querySelector('.error-number');
+        
+        errorNumber.addEventListener('mouseenter', () => {
+            errorNumber.style.animationDuration = '0.5s';
+        });
+        
+        errorNumber.addEventListener('mouseleave', () => {
+            errorNumber.style.animationDuration = '3s';
+        });
+
+        // Dynamic floating elements
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.style.left = Math.random() * 100 + '%';
+            element.style.animationDelay = Math.random() * 20 + 's';
+            element.style.animationDuration = (15 + Math.random() * 10) + 's';
+            
+            document.querySelector('.floating-elements').appendChild(element);
+            
+            // Remove element after animation completes
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            }, 25000);
+        }
+
+        // Add new floating elements periodically
+        setInterval(createFloatingElement, 3000);
+    </script>
+</body>
+</html>
