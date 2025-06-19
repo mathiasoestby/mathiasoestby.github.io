@@ -20,6 +20,7 @@
 
         :root {
             --accent: #ff3366;
+            --nav-height: 90px;
         }
 
         .container {
@@ -29,18 +30,33 @@
         }
 
         /* Navigation */
+        /* 1. LØSNING FOR SCROLL-NAVIGERING:
+           Legger til scroll-margin-top på alle seksjoner som er navigerbare.
+           Dette sikrer at den faste nav-baren ikke dekker til seksjonstittelen. */
+        .section {
+            padding: 6rem 0;
+            border-bottom: 1px solid #000;
+            scroll-margin-top: var(--nav-height); /* Bruker variabelen for høyden */
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 2rem;
             z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #000;
             transition: all 0.15s ease;
             transform: translateY(-100%);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
         }
 
         .nav.scrolled {
@@ -50,31 +66,35 @@
         }
 
         .nav-content {
+            width: 100%;
             max-width: 900px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        /* 2. LØSNING FOR NAV-LOGO (DESKTOP):
+           På større skjermer er logoen på én linje med et lite mellomrom. */
         .nav-logo {
             font-size: 1.3rem;
             font-weight: 900;
-            letter-spacing: 0.05em;
             color: #000;
             position: relative;
             opacity: 0;
             transform: scale(1.2) translateY(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
             line-height: 1;
         }
 
         .nav-logo::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
@@ -107,6 +127,21 @@
         .nav a:hover {
             color: var(--accent);
         }
+        
+        /* 3. LØSNING FOR SPRÅKVELGER: Styling for aktiv/inaktiv knapp. */
+        /* .lang-switcher a {
+            padding: 0 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .lang-switcher a.active {
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .lang-switcher span {
+            color: #ccc;
+        } */
+
 
         /* Hero Section */
         .hero {
@@ -488,32 +523,12 @@
             }
         }
 
-        /* Smooth animations */
-        .hero-text h1 {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .hero-text p {
-            animation: slideUp 0.6s ease-out 0.1s both;
-        }
-
-        .hero-image {
-            animation: slideUp 0.6s ease-out 0.2s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Subtle morphing animation */
         .hero-text h1 {
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-image{
             transition: opacity 0.4s ease;
         }
         
@@ -523,6 +538,10 @@
         
         .morphing-animation .hero-text h1 {
             opacity: 0.3;
+        }
+        .morphing-animation .hero-image {
+            opacity: 0.3;
+            transform: scale(0.9) translateY(-20px);
         }
         
         .morphing-animation .nav-logo {
@@ -542,6 +561,13 @@
                 <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
             </div>
+            
+            <!-- Språkvelger -->
+            <div class="lang-switcher">
+                <a id="lang-no" class="active">NO</a>
+                <span>|</span>
+                <a id="lang-en" href="/en">EN</a>
+            </div>            
         </div>
     </nav>
 
@@ -682,12 +708,12 @@
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">LinkedIn</div>
-                    <a href="#" class="contact-value">linkedin.com/in/mathiasostby</a>
+                    <a href="https://linkedin.com/in/mathiasostby" class="contact-value">linkedin.com/in/mathiasostby</a>
                 </div>
-                <div class="contact-item">
+                <!-- <div class="contact-item">
                     <div class="contact-label">GitHub</div>
                     <a href="#" class="contact-value">github.com/mathiasostby</a>
-                </div>
+                </div> -->
                 <div class="contact-item">
                     <div class="contact-label">Location</div>
                     <div class="contact-value">Oslo, Norway</div>
@@ -730,12 +756,12 @@
                 document.body.classList.remove('morphing-animation');
             }
             
-            // Morphing effect
-            if (scrolled > morphThreshold) {
-                heroH1.classList.add('morphing');
-            } else {
-                heroH1.classList.remove('morphing');
-            }
+            // Morphing effect on hero text
+            // if (scrolled > morphThreshold) {
+            //     heroH1.classList.add('morphing');
+            // } else {
+            //     heroH1.classList.remove('morphing');
+            // }
             
             lastScrollY = scrolled;
             ticking = false;
