@@ -67,7 +67,8 @@
             transform: scale(1.2) translateY(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            gap: 0.3em;
             line-height: 1;
         }
 
@@ -176,6 +177,14 @@
             justify-content: center;
             font-size: 0.9rem;
             color: #999;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* Section Dividers */
@@ -275,12 +284,25 @@
             font-size: 0.9rem;
             color: #999;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .project-image:hover {
             background: var(--accent);
             color: white;
             transform: translateY(-2px);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
         }
 
         .project-tags {
@@ -375,7 +397,7 @@
         .footer-credits {
             text-align: center;
             margin-top: 2rem;
-            padding-top: 1rem;
+            padding-top: 2rem;
             border-top: 1px solid #444;
             font-size: 0.9rem;
             color: #999;
@@ -392,6 +414,14 @@
             .hero-image {
                 max-width: 350px;
                 justify-self: center;
+            }
+        }
+
+        /* Medium screens - keep name on one line */
+        @media (min-width: 480px) {
+            .nav-logo {
+                flex-direction: row;
+                gap: 0.3em;
             }
         }
 
@@ -462,7 +492,7 @@
         }
 
         /* Small screen navbar fixes */
-        @media (max-width: 375px) {
+        @media (max-width: 479px) {
             .nav-content {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -476,6 +506,7 @@
                 text-align: center;
                 font-size: 1.1rem;
                 line-height: 1.1;
+                gap: 0;
             }
             
             .nav-logo .first-name {
@@ -563,7 +594,7 @@
                     <p>Prosjektleder og kreativ teknolog som bygger meningsfulle opplevelser ved å bygge bro mellom tverrfaglige team, kreativ visjon og teknisk utførelse.</p>
                 </div>
                 <div class="hero-image">
-                    <img src="profilb.jpg" alt="Picture of Mathias Østby" class="hero-image">
+                    <img src="profilb.jpg" alt="Picture of Mathias Østby">
                 </div>
             </div>
         </div>
@@ -586,7 +617,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="projects/MUSIKKROM.jpg" alt="MusikkRom lansering" class="project-image">
+                        <img src="projects/MUSIKKROM.jpg" alt="MusikkRom lansering">
                     </div>
                 </div>
 
@@ -602,7 +633,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="projects/EVIGSINGEL.jpg" alt="EVIG SINGEL event" class="project-image">
+                        <img src="projects/EVIGSINGEL.jpg" alt="EVIG SINGEL event">
                     </div>
                 </div>
 
@@ -618,7 +649,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="projects/SCENEKUNST.png" alt="Scenekunst for unge" class="project-image">
+                        <img src="projects/SCENEKUNST.png" alt="Scenekunst for unge">
                     </div>
                 </div>
 
@@ -634,7 +665,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="projects/MOTLYS.jpg" alt="Motlys AS Production" class="project-image"> 
+                        <img src="projects/MOTLYS.jpg" alt="Motlys AS Production"> 
                     </div>
                 </div>
 
@@ -650,7 +681,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="projects/ASP.png" alt="ASP Interpreter code snippet" class="project-image">
+                        <img src="projects/ASP.png" alt="ASP Interpreter code snippet">
                     </div>
                 </div>
 
