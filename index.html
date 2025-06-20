@@ -28,6 +28,139 @@
             padding: 0 2rem;
         }
 
+        /* Large Desktop optimizations */
+        @media (min-width: 2560px) {
+            .container {
+                max-width: 1400px;
+                padding: 0 4rem;
+            }
+            
+            .nav {
+                padding: 3rem;
+            }
+            
+            .nav-logo {
+                font-size: 2rem;
+            }
+            
+            .nav a {
+                font-size: 1.2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: clamp(6rem, 10vw, 12rem);
+            }
+            
+            .hero-text p {
+                font-size: 1.5rem;
+                max-width: 600px;
+            }
+            
+            .hero-image {
+                max-height: 600px;
+                max-width: 500px;
+            }
+            
+            .section {
+                padding: 8rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 4rem;
+            }
+            
+            .experience-content h3 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            .experience-content p {
+                font-size: 1.3rem;
+            }
+            
+            .project-image {
+                height: 450px;
+            }
+            
+            .community-item {
+                padding: 3rem;
+            }
+            
+            .community-item h3 {
+                font-size: 1.6rem;
+            }
+            
+            .community-item p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Desktop 1440px optimizations */
+        @media (min-width: 1440px) and (max-width: 2559px) {
+            .container {
+                max-width: 1200px;
+                padding: 0 3rem;
+            }
+            
+            .nav {
+                padding: 2.5rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav a {
+                font-size: 1rem;
+            }
+            
+            .hero-text h1 {
+                font-size: clamp(4rem, 8vw, 10rem);
+            }
+            
+            .hero-text p {
+                font-size: 1.3rem;
+                max-width: 500px;
+            }
+            
+            .hero-image {
+                max-height: 500px;
+                max-width: 420px;
+            }
+            
+            .section {
+                padding: 7rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .experience-content h3 {
+                font-size: clamp(2rem, 4vw, 3.5rem);
+            }
+            
+            .experience-content p {
+                font-size: 1.2rem;
+            }
+            
+            .project-image {
+                height: 380px;
+            }
+            
+            .community-item {
+                padding: 2.5rem;
+            }
+            
+            .community-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            .community-item p {
+                font-size: 1.1rem;
+            }
+        }
+
         /* Navigation */
         .nav {
             position: fixed;
