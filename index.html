@@ -28,6 +28,139 @@
             padding: 0 2rem;
         }
 
+        /* Large Desktop optimizations */
+        @media (min-width: 2560px) {
+            .container {
+                max-width: 1400px;
+                padding: 0 4rem;
+            }
+            
+            .nav {
+                padding: 3rem;
+            }
+            
+            .nav-logo {
+                font-size: 2rem;
+            }
+            
+            .nav a {
+                font-size: 1.2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: clamp(6rem, 10vw, 12rem);
+            }
+            
+            .hero-text p {
+                font-size: 1.5rem;
+                max-width: 600px;
+            }
+            
+            .hero-image {
+                max-height: 600px;
+                max-width: 500px;
+            }
+            
+            .section {
+                padding: 8rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 4rem;
+            }
+            
+            .experience-content h3 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            .experience-content p {
+                font-size: 1.3rem;
+            }
+            
+            .project-image {
+                height: 450px;
+            }
+            
+            .community-item {
+                padding: 3rem;
+            }
+            
+            .community-item h3 {
+                font-size: 1.6rem;
+            }
+            
+            .community-item p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Desktop 1440px optimizations */
+        @media (min-width: 1440px) and (max-width: 2559px) {
+            .container {
+                max-width: 1200px;
+                padding: 0 3rem;
+            }
+            
+            .nav {
+                padding: 2.5rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav a {
+                font-size: 1rem;
+            }
+            
+            .hero-text h1 {
+                font-size: clamp(4rem, 8vw, 10rem);
+            }
+            
+            .hero-text p {
+                font-size: 1.3rem;
+                max-width: 500px;
+            }
+            
+            .hero-image {
+                max-height: 500px;
+                max-width: 420px;
+            }
+            
+            .section {
+                padding: 7rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .experience-content h3 {
+                font-size: clamp(2rem, 4vw, 3.5rem);
+            }
+            
+            .experience-content p {
+                font-size: 1.2rem;
+            }
+            
+            .project-image {
+                height: 380px;
+            }
+            
+            .community-item {
+                padding: 2.5rem;
+            }
+            
+            .community-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            .community-item p {
+                font-size: 1.1rem;
+            }
+        }
+
         /* Navigation */
         .nav {
             position: fixed;
@@ -67,7 +200,8 @@
             transform: scale(1.2) translateY(20px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            gap: 0.3em;
             line-height: 1;
         }
 
@@ -138,7 +272,6 @@
 
         .hero-text h1.morphing {
             opacity: 0.3;
-            transform: scale(0.8) translateY(-20px);
         }
 
         .hero-text h1::after {
@@ -176,6 +309,14 @@
             justify-content: center;
             font-size: 0.9rem;
             color: #999;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* Section Dividers */
@@ -275,12 +416,25 @@
             font-size: 0.9rem;
             color: #999;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .project-image:hover {
             background: var(--accent);
             color: white;
             transform: translateY(-2px);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
         }
 
         .project-tags {
@@ -372,6 +526,15 @@
             transform: translateX(4px);
         }
 
+        .footer-credits {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
         /* Large screen fixes */
         @media (min-width: 1024px) {
             .nav-logo {
@@ -383,6 +546,14 @@
             .hero-image {
                 max-width: 350px;
                 justify-self: center;
+            }
+        }
+
+        /* Medium screens - keep name on one line */
+        @media (min-width: 480px) {
+            .nav-logo {
+                flex-direction: row;
+                gap: 0.3em;
             }
         }
 
@@ -453,7 +624,7 @@
         }
 
         /* Small screen navbar fixes */
-        @media (max-width: 375px) {
+        @media (max-width: 479px) {
             .nav-content {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -467,6 +638,7 @@
                 text-align: center;
                 font-size: 1.1rem;
                 line-height: 1.1;
+                gap: 0;
             }
             
             .nav-logo .first-name {
@@ -539,8 +711,9 @@
                 <span class="last-name">ØSTBY</span>
             </div>
             <div class="nav-links">
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+                <a href="#experience">Erfaring</a>
+                <a href="#community">Engasjement</a>
+                <a href="#contact">Kontakt</a>
             </div>
         </div>
     </nav>
@@ -550,10 +723,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>MATHIAS<br>ØSTBY</h1>
-                    <p>Project manager and creative technologist who builds meaningful experiences by bridging interdisciplinary teams, creative vision, and technical execution.</p>
+                    <p>Prosjektleder og kreativ teknolog som bygger meningsfulle opplevelser ved å bygge bro mellom tverrfaglige team, kreativ visjon og teknisk utførelse.</p>
                 </div>
                 <div class="hero-image">
-                    <img src="profilb.jpg" alt="Picture of Mathias Østby" class="hero-image">
+                    <img src="profilb.jpg" alt="Picture of Mathias Østby">
                 </div>
             </div>
         </div>
@@ -561,86 +734,86 @@
 
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Project Experience</h2>
+            <h2 class="section-title">Prosjekter & Erfaring</h2>
             <div class="experience-list">
                 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2024 / Internship / Project Management</div>
-                        <h3>MusikkRom Launch</h3>
-                        <p>Led interdisciplinary project management for Oslo Filharmonien's new concept launch. Coordinated creative teams across the entire organization, managing stakeholder communication and ensuring seamless execution of this innovative musical experience initiative.</p>
+                        <div class="experience-meta">2025 / Praksis / Prosjektledelse</div>
+                        <h3>Oslo-filharmonien og MusikkRom</h3>
+                        <p>Bidro som praktikant i tverrfaglig prosjektledelse for Oslo Filharmoniens nye konseptlansering. Bisto med produsentoppgaver, planlegging og utvikling/avvikling av formidlingskonsepter i lanseringen av "MusikkRom".</p>
                         <div class="project-tags">
-                            <span class="tag">Creative PM</span>
-                            <span class="tag">Stakeholder Management</span>
-                            <span class="tag">Cultural Sector</span>
+                            <span class="tag">Kreativ strategi</span>
+                            <span class="tag">Konseptutvikling</span>
+                            <span class="tag">Orkesterproduksjon</span>
                         </div>
                     </div>
                     <div class="project-image">
-                        [MusikkRom Project]
+                        <img src="projects/MUSIKKROM.jpg" alt="MusikkRom lansering">
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2023 / Event Production / Leadership</div>
-                        <h3>Evig Singel Club Event</h3>
-                        <p>Served as project manager and daily leader for large-scale club event in Oslo. Managed entire event lifecycle from concept to execution, coordinating multiple teams and ensuring successful delivery of unique social experience.</p>
+                        <div class="experience-meta">2023 / Event og arrangement / Ledelse</div>
+                        <h3>EVIG SINGEL klubb-event</h3>
+                        <p>Prosjektleder og daglig leder for et klubbarrangment på Storgata 26 i Oslo. Håndterte hele livssyklusen til arrangementet fra konsept til gjennomføring, koordinerte team og sikret en vellykket levering av en unik sosial opplevelse.</p>
                         <div class="project-tags">
-                            <span class="tag">Event Management</span>
-                            <span class="tag">Team Leadership</span>
-                            <span class="tag">Oslo Events</span>
+                            <span class="tag">Arrangementsproduksjon</span>
+                            <span class="tag">Teamutvikling</span>
+                            <span class="tag">Ressursstyring og sponsing</span>
                         </div>
                     </div>
                     <div class="project-image">
-                        [Event Production]
+                        <img src="projects/EVIGSINGEL.jpg" alt="EVIG SINGEL event">
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2023 / Educational Tour / Technical Lead</div>
-                        <h3>Children's Play Tour</h3>
-                        <p>Created and managed educational play tour for students (grades 1-10). Led technical supervision including light, sound, power, and rigging systems. Managed team responsible for grades 8-10 while ensuring safe, engaging experiences across all age groups.</p>
+                        <div class="experience-meta">2023 / Teater og scene / Teknisk produksjon</div>
+                        <h3>Scenekunst for unge</h3>
+                        <p>Utviklet og produserte en scenekunstturné for barn og unge (1.-10. trinn) sammen med skuespillere fra Kristiania. Overordnet teknisk ansvar, inkludert lys, lyd, og strøm. Ledet produksjonsgruppen ansvarlig for 8.-10. trinn.</p>
                         <div class="project-tags">
-                            <span class="tag">Educational PM</span>
-                            <span class="tag">Technical Systems</span>
-                            <span class="tag">Safety Management</span>
+                            <span class="tag">Teaterproduksjon</span>
+                            <span class="tag">Teknisk ledelse</span>
+                            <span class="tag">Produksjonsledelse</span>
                         </div>
                     </div>
                     <div class="project-image">
-                        [Educational Tour]
+                        <img src="projects/SCENEKUNST.png" alt="Scenekunst for unge">
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2022 / Film Production / Technical</div>
-                        <h3>Motlys AS Production</h3>
-                        <p>Production assistant for professional film productions, gaining hands-on experience in movie industry workflows. Coordinated between departments, managed equipment logistics, and supported technical teams throughout production cycles.</p>
+                        <div class="experience-meta">2022 / Praksis / Filmproduksjon  </div>
+                        <h3>Motlys</h3>
+                        <p>Produksjonsassistent i inspillingen av spillefilmen "Stargate". Fikk praktisk erfaring med tverrfaglig ledelse i filmindustrien, med oppgaver som logistikk, statistkoordinering, og generell bistand til alle leddene i produksjonen.</p>
                         <div class="project-tags">
-                            <span class="tag">Film Production</span>
-                            <span class="tag">Logistics</span>
-                            <span class="tag">Technical Support</span>
+                            <span class="tag">Filmproduksjon</span>
+                            <span class="tag">Produksjonsledelse</span>
+                            <span class="tag">Location Management</span>
                         </div>
                     </div>
                     <div class="project-image">
-                        [Film Production]
+                        <img src="projects/MOTLYS.jpg" alt="Motlys AS Production"> 
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2022 / Software Development / Technical</div>
-                        <h3>ASP Language Interpreter</h3>
-                        <p>Developed interpreter for ASP programming language as part of university project. Collaborated in team of 2 to design and implement core language features, demonstrating technical problem-solving and software architecture skills.</p>
+                        <div class="experience-meta">2022 / Software Development / Team </div>
+                        <h3>ASP Interpreter</h3>
+                        <p>Utviklet en interpreter for programmeringsspråket ASP som en del av et universitetsprosjekt. Samarbeidet i et team på 2 med å designe og implementere kjernefunksjoner i språket, og demonstrerte tekniske problemløsningsevner og programvarearkitekturferdigheter.</p>
                         <div class="project-tags">
-                            <span class="tag">Software Development</span>
-                            <span class="tag">Programming Languages</span>
-                            <span class="tag">Team Development</span>
+                            <span class="tag">Programvareutvikling i Java</span>
+                            <span class="tag">Versjonskontroll</span>
+                            <span class="tag">Teamutvikling</span>
                         </div>
                     </div>
                     <div class="project-image">
-                        [Code & Development]
+                        <img src="projects/ASP.png" alt="ASP Interpreter code snippet">
                     </div>
                 </div>
 
@@ -650,23 +823,23 @@
 
     <section id="community" class="section">
         <div class="container">
-            <h2 class="section-title">Community & Leadership</h2>
+            <h2 class="section-title">Engasjement & fritid</h2>
             <div class="community-grid">
                 <div class="community-item">
                     <h3>Kor i Granskauen</h3>
-                    <p>Co-founder and board member of student choir that won <strong>Student Association of the Year 2023</strong>. Led startup phase and ongoing operations of thriving musical community.</p>
+                    <p>Grunnlegger og nåværende styremedlem av studentkoret som ble kåret til <strong>Årets studentforening 2023</strong>. Ledet oppstartsfasen og bidrar til løpende drift av et blomstrende musikalsk fellesskap.</p>
                 </div>
                 <div class="community-item">
-                    <h3>Øyafestivalen Volunteer</h3>
-                    <p>Multi-year volunteer experience at Norway's premier music festival, contributing to large-scale event operations and gaining insight into festival production.</p>
+                    <h3>Frivillig på Øyafestivalen</h3>
+                    <p>Flerårig erfaring som frivillig på en av Norges fremste musikkfestivaler, bidro til oppvartning og rydding ved gjesteområdet, og fikk innsikt i festivalproduksjon.</p>
                 </div>
                 <div class="community-item">
-                    <h3>Travel Group Leadership</h3>
-                    <p>Organized and led travel experiences for groups of 15-20 people, including Interrail trips, Japan tours, and mountain expeditions through Aurlandsdalen.</p>
+                    <h3>Gruppereiser</h3>
+                    <p>Organiserte flere reiseopplevelser for vennegruppe på 10-15 personer, inkludert Interrail-turer, tur til Japan og fjelltur gjennom Aurlandsdalen.</p>
                 </div>
                 <div class="community-item">
-                    <h3>Student Associations</h3>
-                    <p>Active member of multiple student organizations including Fagutvalget ved IFI, focusing on student advocacy and community building within tech education.</p>
+                    <h3>Studentforeninger</h3>
+                    <p>Aktivt medlem i flere studentorganisasjoner, inkludert <strong>Fagutvalget ved IFI</strong>, med fokus på studenters rettigheter og fellesskapsbygging innen teknisk utdanning, samt vært med på å stifte det sosiale og mat-entusiastiske <strong>TOASTJÆRN</strong></p>
                 </div>
             </div>
         </div>
@@ -678,20 +851,20 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-label">Email</div>
-                    <a href="mailto:mathias@example.com" class="contact-value">mathias@example.com</a>
+                    <a href="#" class="contact-value">mathiasoestby[at]gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">LinkedIn</div>
-                    <a href="#" class="contact-value">linkedin.com/in/mathiasostby</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">GitHub</div>
-                    <a href="#" class="contact-value">github.com/mathiasostby</a>
+                    <a href="https://www.linkedin.com/in/mathiasoestby" class="contact-value">linkedin.com/in/mathiasoestby</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">Location</div>
                     <div class="contact-value">Oslo, Norway</div>
                 </div>
+            </div>
+            <!-- Opphavsinformasjon -->
+            <div class="footer-credits">
+                <p>Designet og utviklet av Mathias Østby 2025.</p>
             </div>
         </div>
     </section>
@@ -720,7 +893,7 @@
         
         function updateNav() {
             const scrolled = window.scrollY;
-            const morphThreshold = 200;
+            const morphThreshold = 220;
             
             if (scrolled > 300) {
                 nav.classList.add('scrolled');
