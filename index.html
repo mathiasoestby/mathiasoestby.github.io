@@ -124,7 +124,6 @@
         color: var(--accent);
     }
 
-    
     /* Navbar development dot */
 
     .nav-dev-dot {
@@ -137,6 +136,10 @@
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         cursor: pointer;
+        align-self: center; /* Center vertically in flex container */
+        margin-top: 0;      /* Remove any offset */
+        margin-bottom: 0;
+        display: flex;
     }
 
     .nav-dev-dot.active {
@@ -146,9 +149,9 @@
 
     /* Tooltip for navbar dot */
     .nav-dev-dot::before {
-        content: 'Under Utvikling';
+        content: 'Siden er under utvikling';
         position: absolute;
-        bottom: -35px;
+        bottom: -40px;
         left: 50%;
         transform: translateX(-50%);
         background: #000;
@@ -167,7 +170,7 @@
     .nav-dev-dot::after {
         content: '';
         position: absolute;
-        bottom: -25px;
+        bottom: -35px;
         left: 50%;
         transform: translateX(-50%);
         width: 0;
@@ -217,7 +220,7 @@
         height: 10px;
         background-color: var(--accent);
         border-radius: 50%;
-        animation: pulseDot 2s ease-in-out 2; /* Pulse twice then stop */
+        animation: pulseDot 3s ease-in-out infinite; /* Pulse twice then stop */
     }
 
     .dev-status-text {
@@ -822,7 +825,7 @@
     <div class="dev-status-hero" id="devStatusHero">
         <div class="dev-status-box">
             <div class="dev-status-dot"></div>
-            <span class="dev-status-text">Under Utvikling</span>
+            <span class="dev-status-text">Siden er under utvikling</span>
         </div>
     </div>
     <section class="hero">
