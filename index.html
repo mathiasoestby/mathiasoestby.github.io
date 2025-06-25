@@ -133,13 +133,19 @@
         border-radius: 50%;
         opacity: 0;
         transform: scale(0);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
         position: relative;
         cursor: pointer;
         align-self: center; /* Center vertically in flex container */
         margin-top: 0;      /* Remove any offset */
         margin-bottom: 0;
         display: flex;
+    }
+
+    .nav.scrolled .nav-dev-dot {
+        opacity: 1;
+        transform: scale(1);
+        animation: pulseDot 2s ease-in-out 0.1s 1.15;
     }
 
     .nav-dev-dot.active {
@@ -194,7 +200,7 @@
     /* Development Status stil */
     .dev-status-hero {
         position: absolute;
-        top: 0;
+        top: 2rem;
         left: 50%;
         transform: translateX(-50%);
         z-index: 50;
@@ -212,7 +218,7 @@
         border: 1px solid #ddd;
         border-radius: 50px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        animation: fadeInScale 0.5s ease-out 0.8s both;
+        animation: fadeInScale 0.3s ease-out 0.6s both;
     }
 
     .dev-status-dot {
@@ -220,7 +226,7 @@
         height: 10px;
         background-color: var(--accent);
         border-radius: 50%;
-        animation: pulseDot 3s ease-in-out infinite; /* Pulse twice then stop */
+        animation: pulseDot 3s ease-in-out infinite; 
     }
 
     .dev-status-text {
@@ -1015,7 +1021,7 @@
         const heroH1 = document.querySelector('.hero-text h1');
         const navLogo = document.querySelector('.nav-logo');
         const devBox = document.querySelector('.dev-status-box');
-        const devDot = document.getElementById('navDevDot');
+        const navDevDot = document.getElementById('navDevDot');
 
         let lastScrollY = window.scrollY;
         let ticking = false;
@@ -1038,12 +1044,12 @@
                 devBox.classList.add('scrolled');
                 // Show development dot if scrolled past threshold (only for larger screens)
                 if (window.innerWidth > 768) {
-                    devDot.classList.add('active');
+                    navDevDot.classList.add('active');
                 }
             } else {
                 heroH1.classList.remove('morphing');
                 devBox.classList.remove('scrolled');
-                devDot.classList.remove('active');
+                navDevDot.classList.remove('active');
             }
             
             lastScrollY = scrolled;
