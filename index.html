@@ -4,703 +4,812 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathias Østby</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        <style>
+            /* ==========================================================================
+    1. Globale Stiler & Variabler
+    ========================================================================== */
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #fff;
-            color: #000;
-            line-height: 1.5;
-        }
+    :root {
+        --accent: #ff3366;
+    }
 
-        :root {
-            --accent: #ff3366;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    body {
+        background: #fff;
+        color: #000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+    }
 
-        /* Large Desktop optimizations */
-        @media (min-width: 2560px) {
-            .container {
-                max-width: 1400px;
-                padding: 0 4rem;
-            }
-            
-            .nav {
-                padding: 3rem;
-            }
-            
-            .nav-logo {
-                font-size: 2rem;
-            }
-            
-            .nav a {
-                font-size: 1.2rem;
-            }
-            
-            .hero-text h1 {
-                font-size: clamp(6rem, 10vw, 12rem);
-            }
-            
-            .hero-text p {
-                font-size: 1.5rem;
-                max-width: 600px;
-            }
-            
-            .hero-image {
-                max-height: 600px;
-                max-width: 500px;
-            }
-            
-            .section {
-                padding: 8rem 0;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 4rem;
-            }
-            
-            .experience-content h3 {
-                font-size: clamp(2.5rem, 5vw, 4rem);
-            }
-            
-            .experience-content p {
-                font-size: 1.3rem;
-            }
-            
-            .project-image {
-                height: 450px;
-            }
-            
-            .community-item {
-                padding: 3rem;
-            }
-            
-            .community-item h3 {
-                font-size: 1.6rem;
-            }
-            
-            .community-item p {
-                font-size: 1.2rem;
-            }
-        }
+    /* ==========================================================================
+    2. Layout
+    ========================================================================== */
 
-        /* Desktop 1440px optimizations */
-        @media (min-width: 1440px) and (max-width: 2559px) {
-            .container {
-                max-width: 1200px;
-                padding: 0 3rem;
-            }
-            
-            .nav {
-                padding: 2.5rem;
-            }
-            
-            .nav-logo {
-                font-size: 1.8rem;
-            }
-            
-            .nav a {
-                font-size: 1rem;
-            }
-            
-            .hero-text h1 {
-                font-size: clamp(4rem, 8vw, 10rem);
-            }
-            
-            .hero-text p {
-                font-size: 1.3rem;
-                max-width: 500px;
-            }
-            
-            .hero-image {
-                max-height: 500px;
-                max-width: 420px;
-            }
-            
-            .section {
-                padding: 7rem 0;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .experience-content h3 {
-                font-size: clamp(2rem, 4vw, 3.5rem);
-            }
-            
-            .experience-content p {
-                font-size: 1.2rem;
-            }
-            
-            .project-image {
-                height: 380px;
-            }
-            
-            .community-item {
-                padding: 2.5rem;
-            }
-            
-            .community-item h3 {
-                font-size: 1.5rem;
-            }
-            
-            .community-item p {
-                font-size: 1.1rem;
-            }
-        }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
 
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #000;
-            transition: all 0.15s ease;
-            transform: translateY(-100%);
-        }
+    /* ==========================================================================
+    3. Komponenter
+    ========================================================================== */
 
-        .nav.scrolled {
-            transform: translateY(0);
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    /* --------------------------------------------------------------------------
+    Navigasjon
+    -------------------------------------------------------------------------- */
 
-        .nav-content {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #000;
+        transform: translateY(-100%);
+        transition: all 0.15s ease;
+    }
 
-        .nav-logo {
-            font-size: 1.3rem;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            color: #000;
-            position: relative;
+    .nav.scrolled {
+        transform: translateY(0);
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        display: flex;
+        flex-direction: row;
+        gap: 0.3em;
+        font-size: 1.3rem;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        color: #000;
+        line-height: 1;
+        position: relative;
+        opacity: 0;
+        transform: scale(1.2) translateY(20px);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav-logo::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease 0.2s;
+    }
+
+    .nav.scrolled .nav-logo {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    .nav.scrolled .nav-logo::after {
+        width: 100%;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .nav a {
+        color: #000;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.15s ease;
+    }
+
+    .nav a:hover {
+        color: var(--accent);
+    }
+
+    /* Navbar development dot */
+
+    .nav-dev-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+        position: relative;
+        cursor: pointer;
+        align-self: center; /* Center vertically in flex container */
+        margin-top: 0;      /* Remove any offset */
+        margin-bottom: 0;
+        display: flex;
+    }
+
+    .nav.scrolled .nav-dev-dot {
+        opacity: 1;
+        transform: scale(1);
+        animation: pulseDot 2s ease-in-out 0.1s 1.15;
+    }
+
+    .nav-dev-dot.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Tooltip for navbar dot */
+    .nav-dev-dot::before {
+        content: 'Siden er under utvikling';
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #000;
+        color: #fff;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 1000;
+    }
+
+    .nav-dev-dot::after {
+        content: '';
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid #000;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .nav-dev-dot:hover::before,
+    .nav-dev-dot:hover::after {
+        opacity: 1;
+    }
+
+    /* --------------------------------------------------------------------------
+    Hero Seksjon
+    -------------------------------------------------------------------------- */
+
+    /* Development Status stil */
+    .dev-status-hero {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        padding: 2rem 0;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dev-status-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1.5rem;
+        background: rgba(248, 248, 248, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        animation: fadeInScale 0.3s ease-out 0.6s both;
+    }
+
+    .dev-status-dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        animation: pulseDot 3s ease-in-out infinite; 
+    }
+
+    .dev-status-text {
+        font-weight: 500;
+        color: #555;
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+    }
+
+
+    /* Hide hero status when scrolled */
+    .dev-status-hero.scrolled {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+        pointer-events: none;
+    }
+
+
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #000;
+    }
+
+    .hero-content {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(3rem, 8vw, 8rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 0.9;
+        margin-bottom: 2rem;
+        color: #000;
+        position: relative;
+        transform-origin: top left;
+        animation: slideUp 0.8s ease-out;
+        transition: opacity 0.4s ease;
+    }
+
+    .hero-text h1::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: -10px;
+        right: -10px;
+        height: 8px;
+        background: var(--accent);
+        transform: skew(-20deg);
+        opacity: 0.8;
+        transition: opacity 0.4s ease;
+    }
+
+    .hero-text h1.morphing {
+        opacity: 0.3;
+    }
+
+    .hero-text h1.morphing::after {
+        opacity: 0.2;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 400px;
+        line-height: 1.6;
+        animation: slideUp 0.6s ease-out 0.1s both;
+    }
+
+    .hero-image {
+        width: 100%;
+        aspect-ratio: 4/5;
+        max-height: 400px;
+        background: #f0f0f0;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #999;
+        overflow: hidden;
+        animation: slideUp 0.6s ease-out 0.2s both;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* --------------------------------------------------------------------------
+    Generelle Seksjoner
+    -------------------------------------------------------------------------- */
+
+    .section {
+        padding: 6rem 0;
+        border-bottom: 1px solid #000;
+    }
+
+    .section:last-child {
+        border-bottom: none;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent);
+    }
+
+    /* --------------------------------------------------------------------------
+    Experience Seksjon
+    -------------------------------------------------------------------------- */
+
+    .experience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+    }
+
+    .experience-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        padding-bottom: 6rem;
+        border-bottom: 1px solid #000;
+    }
+
+    .experience-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .experience-item:nth-child(even) {
+        direction: rtl;
+    }
+
+    .experience-item:nth-child(even) > * {
+        direction: ltr;
+    }
+
+    .experience-content {
+        padding: 2rem 0;
+    }
+
+    .experience-meta {
+        font-size: 0.8rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .experience-content h3 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+    }
+
+    .experience-content p {
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+    .project-tags {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 300px;
+        background: #f5f5f5;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: #999;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .project-image:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+    }
+
+    .project-image:hover img {
+        transform: scale(1.05);
+    }
+
+
+    /* --------------------------------------------------------------------------
+    Community Seksjon
+    -------------------------------------------------------------------------- */
+
+    .community-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+    }
+
+    .community-item {
+        padding: 2rem;
+        border: 1px solid #000;
+        transition: all 0.3s ease;
+    }
+
+    .community-item:hover {
+        background: #f9f9f9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .community-item h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #000;
+    }
+
+    .community-item p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .community-item strong {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    /* --------------------------------------------------------------------------
+    Kontakt / Footer
+    -------------------------------------------------------------------------- */
+
+    #contact {
+        background: #000;
+        color: #fff;
+        margin-top: 0; /* Beholder for sikkerhets skyld, selv om section-gap skal håndtere dette */
+    }
+
+    #contact .section-title {
+        color: #fff;
+    }
+
+    .contact-info {
+        display: flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .contact-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-label {
+        font-size: 0.8rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .contact-value {
+        font-size: 1rem;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-value:hover {
+        color: var(--accent);
+        transform: translateX(4px);
+    }
+
+    .footer-credits {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+        font-size: 0.9rem;
+        color: #999;
+    }
+
+    /* ==========================================================================
+    4. Animasjoner
+    ========================================================================== */
+
+    @keyframes slideUp {
+        from {
             opacity: 0;
-            transform: scale(1.2) translateY(20px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: row;
-            gap: 0.3em;
-            line-height: 1;
+            transform: translateY(30px);
         }
-
-        .nav-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease 0.2s;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        .nav.scrolled .nav-logo {
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.8) translateY(10px);
+        }
+        to {
             opacity: 1;
             transform: scale(1) translateY(0);
         }
+    }
 
-        .nav.scrolled .nav-logo::after {
-            width: 100%;
+    @keyframes pulseDot {
+        0% {
+            transform: scale(0.8);
+            box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
         }
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(255, 51, 102, 0);
+        }
+        100% {
+            transform: scale(0.8);
+            box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+        }
+    }
 
+    .morphing-animation .hero-text h1 {
+        opacity: 0.3;
+    }
+
+    .morphing-animation .nav-logo {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+
+    /* ==========================================================================
+    5. Media Queries (Responsive Design)
+    ========================================================================== */
+
+    /* Store skjermer (f.eks. 4K) */
+    @media (min-width: 2560px) {
+        .container {
+            max-width: 1400px;
+            padding: 0 4rem;
+        }
+        .nav {
+            padding: 3rem;
+        }
+        .nav-logo {
+            font-size: 2rem;
+        }
+        .nav a {
+            font-size: 1.2rem;
+        }
+        .hero-text h1 {
+            font-size: clamp(6rem, 10vw, 12rem);
+        }
+        .hero-text p {
+            font-size: 1.5rem;
+            max-width: 600px;
+        }
+        .hero-image {
+            max-height: 600px;
+            max-width: 500px;
+        }
+        .section {
+            padding: 8rem 0;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 4rem;
+        }
+        .experience-content h3 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+        .experience-content p {
+            font-size: 1.3rem;
+        }
+        .project-image {
+            height: 450px;
+        }
+        .community-item {
+            padding: 3rem;
+        }
+        .community-item h3 {
+            font-size: 1.6rem;
+        }
+        .community-item p {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Standard Desktop (f.eks. 1440p) */
+    @media (min-width: 1440px) and (max-width: 2559px) {
+        .container {
+            max-width: 1200px;
+            padding: 0 3rem;
+        }
+        .nav {
+            padding: 2.5rem;
+        }
+        .nav-logo {
+            font-size: 1.8rem;
+        }
+        .nav a {
+            font-size: 1rem;
+        }
+        .hero-text h1 {
+            font-size: clamp(4rem, 8vw, 10rem);
+        }
+        .hero-text p {
+            font-size: 1.3rem;
+            max-width: 500px;
+        }
+        .hero-image {
+            max-height: 500px;
+            max-width: 420px;
+        }
+        .section {
+            padding: 7rem 0;
+        }
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .experience-content h3 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+        .experience-content p {
+            font-size: 1.2rem;
+        }
+        .project-image {
+            height: 380px;
+        }
+        .community-item {
+            padding: 2.5rem;
+        }
+        .community-item h3 {
+            font-size: 1.5rem;
+        }
+        .community-item p {
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Laptop / Større nettbrett */
+    @media (min-width: 1024px) {
+        .nav-logo {
+            font-size: 1.5rem;
+            letter-spacing: 0.08em;
+        }
+        .hero-image {
+            max-width: 350px;
+            justify-self: center;
+        }
+    }
+
+    /* Nettbrett og mindre */
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+        .nav {
+            padding: 1rem;
+        }
+        .nav-content {
+            gap: 1rem;
+        }
         .nav-links {
-            display: flex;
+            gap: 1rem;
+        }
+        .nav a {
+            font-size: 0.8rem;
+        }
+        /* Dev status */
+        /* .dev-status-hero {
+        display: none;
+        } */
+        
+        .nav-dev-dot {
+            display: none;
+        }
+        .hero-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 12vw, 4rem);
+        }
+        .hero-image {
+            display: none;
+        }
+        .section {
+            padding: 4rem 0;
+        }
+        .experience-item {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding-bottom: 4rem;
+        }
+        .experience-item:nth-child(even) {
+            direction: ltr; /* Reset RTL for stabling */
+        }
+        .project-image {
+            order: -1; /* Plasserer bilde over tekst */
+            height: 250px;
+        }
+        .experience-content h3 {
+            font-size: clamp(1.5rem, 6vw, 2rem);
+        }
+        .contact-info {
+            flex-direction: column;
             gap: 2rem;
         }
+    }
 
-        .nav a {
-            color: #000;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.15s ease;
+    /* Mobil */
+    @media (max-width: 479px) {
+        .nav {
+            padding: 1.5rem 1rem;
         }
-
-        .nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #000;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            position: relative;
-            color: #000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: top left;
-        }
-
-        .hero-text h1.morphing {
-            opacity: 0.3;
-        }
-
-        .hero-text h1::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: -10px;
-            right: -10px;
-            height: 8px;
-            background: var(--accent);
-            transform: skew(-20deg);
-            opacity: 0.8;
-            transition: opacity 0.4s ease;
-        }
-
-        .hero-text h1.morphing::after {
-            opacity: 0.2;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 400px;
-            line-height: 1.6;
-        }
-
-        .hero-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            max-height: 400px;
-            background: #f0f0f0;
-            border: 1px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: #999;
-            overflow: hidden;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* Section Dividers */
-        .section {
-            padding: 6rem 0;
-            border-bottom: 1px solid #000;
-        }
-
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        /* Experience Section */
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6rem;
-        }
-
-        .experience-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding-bottom: 6rem;
-            border-bottom: 1px solid #000;
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .experience-item:nth-child(even) {
-            direction: rtl;
-        }
-
-        .experience-item:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .experience-content {
-            padding: 2rem 0;
-        }
-
-        .experience-meta {
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .experience-content h3 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .experience-content p {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 300px;
-            background: #f5f5f5;
-            border: 1px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: #999;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .project-image:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.3s ease;
-        }
-
-        .project-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* Community Section */
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .community-item {
-            padding: 2rem;
-            border: 1px solid #000;
-            transition: all 0.3s ease;
-        }
-
-        .community-item:hover {
-            background: #f9f9f9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .community-item h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #000;
-        }
-
-        .community-item p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .community-item strong {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Contact Section - Black Footer */
-        #contact {
-            background: #000;
-            color: #fff;
-            border-bottom: none;
-            margin-top: 0;
-        }
-
-        #contact .section-title {
-            color: #fff;
-        }
-
-        #contact .section-title::after {
-            background: var(--accent);
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
+        .nav-content {
             flex-direction: column;
             gap: 0.5rem;
+            align-items: center;
         }
-
-        .contact-label {
-            font-size: 0.8rem;
-            color: #999;
-            text-transform: uppercase;
+        .nav-logo {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.1;
+            gap: 0;
+        }
+        .nav-logo .first-name {
             letter-spacing: 0.1em;
         }
-
-        .contact-value {
-            font-size: 1rem;
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.2s ease;
+        .nav-logo .last-name {
+            letter-spacing: 0.35em;
+            margin-left: 0.15em;
         }
-
-        .contact-value:hover {
-            color: var(--accent);
-            transform: translateX(4px);
+        .nav-links {
+            gap: 1.5rem;
+            margin-top: 0.5rem;
         }
-
-        .footer-credits {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            font-size: 0.9rem;
-            color: #999;
-        }
-
-        /* Large screen fixes */
-        @media (min-width: 1024px) {
-            .nav-logo {
-                font-size: 1.5rem;
-                font-weight: 900;
-                letter-spacing: 0.08em;
-            }
-            
-            .hero-image {
-                max-width: 350px;
-                justify-self: center;
-            }
-        }
-
-        /* Medium screens - keep name on one line */
-        @media (min-width: 480px) {
-            .nav-logo {
-                flex-direction: row;
-                gap: 0.3em;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .nav {
-                padding: 1rem;
-            }
-
-            .nav-content {
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav a {
-                font-size: 0.8rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: clamp(2.5rem, 12vw, 4rem);
-            }
-
-            .hero-image {
-                height: 350px;
-                order: -1;
-            }
-
-            .experience-item {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding-bottom: 4rem;
-            }
-
-            .experience-item:nth-child(even) {
-                direction: ltr;
-            }
-
-            .project-image {
-                order: -1;
-                height: 250px;
-            }
-
-            .experience-content h3 {
-                font-size: clamp(1.5rem, 6vw, 2rem);
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-        }
-
-        /* Small screen navbar fixes */
-        @media (max-width: 479px) {
-            .nav-content {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-            
-            .nav-logo {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                font-size: 1.1rem;
-                line-height: 1.1;
-                gap: 0;
-            }
-            
-            .nav-logo .first-name {
-                letter-spacing: 0.1em;
-            }
-            
-            .nav-logo .last-name {
-                letter-spacing: 0.35em;
-                margin-left: 0.15em;
-            }
-            
-            .nav-links {
-                gap: 1.5rem;
-                margin-top: 0.5rem;
-            }
-            
-            .nav {
-                padding: 1.5rem 1rem;
-            }
-        }
-
-        /* Smooth animations */
-        .hero-text h1 {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .hero-text p {
-            animation: slideUp 0.6s ease-out 0.1s both;
-        }
-
-        .hero-image {
-            animation: slideUp 0.6s ease-out 0.2s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Subtle morphing animation */
-        .hero-text h1 {
-            transition: opacity 0.4s ease;
-        }
-        
-        .nav-logo {
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        .morphing-animation .hero-text h1 {
-            opacity: 0.3;
-        }
-        
-        .morphing-animation .nav-logo {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
+    }
     </style>
 </head>
 <body>
@@ -714,10 +823,17 @@
                 <a href="#experience">Erfaring</a>
                 <a href="#community">Engasjement</a>
                 <a href="#contact">Kontakt</a>
+                <div class="nav-dev-dot" id="navDevDot"></div>
             </div>
         </div>
     </nav>
 
+    <div class="dev-status-hero" id="devStatusHero">
+        <div class="dev-status-box">
+            <div class="dev-status-dot"></div>
+            <span class="dev-status-text">Siden er under utvikling</span>
+        </div>
+    </div>
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -803,7 +919,7 @@
 
                 <div class="experience-item">
                     <div class="experience-content">
-                        <div class="experience-meta">2022 / Software Development / Team </div>
+                        <div class="experience-meta">2022 / Development Project / Team </div>
                         <h3>ASP Interpreter</h3>
                         <p>Utviklet en interpreter for programmeringsspråket ASP som en del av et universitetsprosjekt. Samarbeidet i et team på 2 med å designe og implementere kjernefunksjoner i språket, og demonstrerte tekniske problemløsningsevner og programvarearkitekturferdigheter.</p>
                         <div class="project-tags">
@@ -814,6 +930,22 @@
                     </div>
                     <div class="project-image">
                         <img src="projects/ASP.png" alt="ASP Interpreter code snippet">
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-meta">2023-2024 / Forskningsprosjekt / Programvareutvikling</div>
+                        <h3>Studentgrouper </h3>
+                        <p>Utvikler i et team på fire for OsloMET's forskningsprosjekt "Digigroups". Utviklet et Python-basert program som automatisk grupperer studenter i kollokviegrupper basert på deres preferanser. Bidro til teamadministrasjon og prosjektfremdrift, sammen med programmering og dokumentasjon.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Forskningsprosjekt</span>
+                            <span class="tag">Teamledelse</span>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <img src="projects/DIGIGROUPS.png" alt="Digigroups system interface">
                     </div>
                 </div>
 
@@ -871,16 +1003,23 @@
 
     <script>
         // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        // Get navbar height dynamically
+                        const navbarHeight = document.querySelector('.nav').offsetHeight;
+                        // Calculate final scroll position
+                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 1; // +1 for slight adjustment
+                        
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
 
@@ -888,6 +1027,9 @@
         const nav = document.querySelector('.nav');
         const heroH1 = document.querySelector('.hero-text h1');
         const navLogo = document.querySelector('.nav-logo');
+        const devBox = document.querySelector('.dev-status-box');
+        const navDevDot = document.getElementById('navDevDot');
+
         let lastScrollY = window.scrollY;
         let ticking = false;
         
@@ -906,8 +1048,15 @@
             // Morphing effect
             if (scrolled > morphThreshold) {
                 heroH1.classList.add('morphing');
+                devBox.classList.add('scrolled');
+                // Show development dot if scrolled past threshold (only for larger screens)
+                if (window.innerWidth > 768) {
+                    navDevDot.classList.add('active');
+                }
             } else {
                 heroH1.classList.remove('morphing');
+                devBox.classList.remove('scrolled');
+                navDevDot.classList.remove('active');
             }
             
             lastScrollY = scrolled;
